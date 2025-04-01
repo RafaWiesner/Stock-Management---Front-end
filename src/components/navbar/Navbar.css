@@ -1,0 +1,104 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #555;
+    border-radius: 5px 5px 0 0;
+    align-items: flex-start; /* Alinha tudo à esquerda */
+    overflow: hidden;
+    height: 60px; /* Altura padrão */
+    transition: height 0.3s ease-in-out;
+}
+
+/* Quando o menu está aberto, aumenta a altura do navbar */
+.navbar.expanded {
+    height: auto;
+    padding-bottom: 15px;
+}
+
+/* Botão do menu hambúrguer */
+.menu-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px 15px;
+    display: none; /* Esconde o botão em telas grandes */
+}
+
+/* Estilizando os botões */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha os botões à esquerda */
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 100%;
+    padding-left: 15px; /* Mantém alinhado com o botão do menu */
+}
+
+/* Exibir os botões quando o navbar estiver expandido */
+.navbar.expanded .buttons {
+    opacity: 1;
+}
+
+/* Estilização dos botões */
+.buttons button {
+    color: #f2f2f2;
+    transition: .2s;
+    text-align: left; /* Alinha o texto dentro do botão à esquerda */
+    width: auto; /* Deixa o botão apenas do tamanho do texto */
+    justify-content: flex-start; /* Alinha o conteúdo interno do botão */
+    display: flex;
+}
+
+/* Input de pesquisa */
+.search-input {
+    max-width: 130px;
+    background-color: #555;
+    color: #f2f2f2;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 1rem;
+    outline: none;
+    margin-left: 5px;
+}
+
+.search-input::placeholder {
+    color: #f2f2f2;
+}
+
+/* Responsividade: Mostrar menu normal em telas grandes */
+@media (min-width: 769px) {
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        padding: 10px 15px;
+    }
+    .menu-button {
+        display: none; /* Oculta o botão do menu em telas grandes */
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        opacity: 1;
+        gap: 1rem;
+        padding-left: 0;
+    }
+}
+
+/* Responsividade: Mostrar menu hambúrguer em telas menores */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block; /* Exibe o botão do menu em telas menores */
+    }
+    .buttons {
+        display: none; /* Esconde os botões por padrão */
+    }
+    .navbar.expanded .buttons {
+        display: flex;
+    }
+}
