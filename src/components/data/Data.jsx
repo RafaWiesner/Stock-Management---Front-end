@@ -63,6 +63,7 @@ const displayedProducts = state.searchInputValue ? state.filteredProducts : stat
                 page={state.page}
                 rowsPerPage={state.rowsPerPage}
                 onPageChange={(e, currentPage) => handleChangePage(currentPage)}
+                labelDisplayedRows={({ from, to, count }) => `${from}–${to} de ${count}`}
               />
             </TableRow>
           </TableFooter>
