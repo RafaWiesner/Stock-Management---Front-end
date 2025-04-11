@@ -51,7 +51,14 @@
     width: auto; /* Deixa o botão apenas do tamanho do texto */
     justify-content: flex-start; /* Alinha o conteúdo interno do botão */
     display: flex;
+    transition: color 0.1s ease-in-out;
 }
+
+.buttons button:hover {
+    color: #ccc;
+}
+
+
 
 /* Input de pesquisa */
 .search-input {
@@ -67,6 +74,28 @@
 
 .search-input::placeholder {
     color: #f2f2f2;
+}
+
+/* Botão de login (Olá! Entre ou Cadastre-se) */
+.login-redirect {
+    margin-left: auto;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.login-link {
+    background: none;
+    border: none;
+    color: #f2f2f2;
+    font-size: 16px;
+    max-width: 130px;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+}
+
+.login-link:hover {
+    color: #ccc;
 }
 
 /* Responsividade: Mostrar menu normal em telas grandes */
@@ -88,16 +117,47 @@
         gap: 1rem;
         padding-left: 0;
     }
+
+    .login-link {
+        background: none;
+        border: none;
+        color: #f2f2f2;
+        font-size: 14px;
+        max-width: 130px;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+    }
 }
 
 /* Responsividade: Mostrar menu hambúrguer em telas menores */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .menu-button {
         display: block; /* Exibe o botão do menu em telas menores */
+        order: 1;
     }
+
+    .login-redirect {
+        order: 2;
+        margin-left: 0;
+        padding-left: 0;
+        width: auto;
+        justify-content: flex-end;
+    }
+
     .buttons {
+        order: 3;
         display: none; /* Esconde os botões por padrão */
+        width: 100%;
+        padding-left: 15px;
     }
+
     .navbar.expanded .buttons {
         display: flex;
     }

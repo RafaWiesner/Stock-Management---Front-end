@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import { Button } from "@mui/material";
 import { deleteProduct } from "../../api/products";
@@ -6,7 +7,8 @@ import { ProductContext } from '../../context/ProductsContext';
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ProductContext);
-  const [menuOpen, setMenuOpen] = useState(false); // Estado do menu
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate(); // redirecionamento
 
   const handleDeleteProduct = async () => {
     try {
@@ -24,11 +26,14 @@ const Navbar = () => {
     });
   };
 
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <div className={`navbar ${menuOpen ? "expanded" : ""}`}>
       <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)}>
-        {!menuOpen ? "☰" : "x" }
-        
+        {!menuOpen ? "☰" : "x"}
       </button>
 
       <div className="buttons">
@@ -38,15 +43,19 @@ const Navbar = () => {
 
         {state.selectedProduct && <Button onClick={handleDeleteProduct}>Excluir</Button>}
 
-        <div>
-          <input
-            type="text"
-            placeholder="Buscar produtos..."
-            value={state.searchInputValue}
-            className="search-input"
-            onChange={searchProductInput}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Buscar produtos..."
+          value={state.searchInputValue}
+          className="search-input"
+          onChange={searchProductInput}
+        />
+      </div>
+
+      <div className="login-redirect">
+        <button onClick={goToLogin} className="login-link">
+          Olá! Entre ou Cadastre-se
+        </button>
       </div>
     </div>
   );
