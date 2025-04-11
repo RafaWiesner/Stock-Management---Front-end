@@ -2,7 +2,7 @@ import api from "./api";
 
 const getProducts = async () => {
     try {
-        const products = await api.get("/");
+        const products = await api.get("/products");
         return products.data;
     } catch (error) {
         console.error("Erro ao buscar produtos:", error)
