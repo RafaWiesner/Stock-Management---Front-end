@@ -2,7 +2,7 @@ import api from "./api";
 
 const getProducts = async () => {
     try {
-        const products = await api.get("/products");
+        const products = await api.get("/");
         return products.data;
     } catch (error) {
         console.error("Erro ao buscar produtos:", error)
@@ -12,7 +12,7 @@ const getProducts = async () => {
 
 const createProduct =  async (data) => {
     try {
-        const newProduct = await api.post("/products", data)
+        const newProduct = await api.post("/", data)
         return newProduct.data;
     } catch (error) {
         console.error("Erro ao criar um novo produto:", error)
@@ -22,7 +22,7 @@ const createProduct =  async (data) => {
 
 const updateProduct = async (id, data) => {
     try {
-        const updatedProduct = await api.patch(`/products/${id}`, data)
+        const updatedProduct = await api.patch(`/${id}`, data)
         return updatedProduct.data;
     } catch (error) {
         console.error("Erro ao atualizar produto:", error)
