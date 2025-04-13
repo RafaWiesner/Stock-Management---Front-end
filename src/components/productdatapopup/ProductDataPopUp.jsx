@@ -16,12 +16,12 @@ const ProductDataPopUp = () => {
       const { name, value } = e.target;
 
       // Validação para o campo 'tipo' - apenas letras e espaços
-      if (name === "tipo" && !/^[A-Za-z\s]*$/.test(value)) {
+      if (name === "type" && !/^[A-Za-z\s]*$/.test(value)) {
         return; // Não atualiza se for inválido
       }
     
       // Validação para 'preco' e 'quantidade' - apenas números maiores que 0
-      if ((name === "preco" || name === "quantidade") && (isNaN(value) || Number(value) <= 0)) {
+      if ((name === "price" || name === "stock") && (isNaN(value) || Number(value) <= 0)) {
         return;
       }
 
