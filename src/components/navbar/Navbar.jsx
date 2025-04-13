@@ -57,7 +57,7 @@ const Navbar = () => {
 
       <div className="login-redirect">
         <button onClick={goToLogin} className="login-link">
-          {user ? `Olá, ${user.name}`: "Olá! Entre ou cadastre-se."}
+          {user.name ? `Olá, ${user.name}` : "Olá! Entre ou cadastre-se."}
         </button>
       </div>
     </div>
