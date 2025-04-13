@@ -2,7 +2,7 @@ import api from "./api";
 
 const loginUser = async (email, password) => {
   try {
-    const userLoginData = await api.post("/login", { email, password });
+    const userLoginData = await api.post("/users/login", { email, password });
     return userLoginData.data;
   } catch (error) {
     console.error("Erro ao fazer login:", error)
