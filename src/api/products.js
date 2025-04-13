@@ -32,7 +32,7 @@ const updateProduct = async (id, data) => {
 
 const deleteProduct = async (id) => {
 try {
-    await api.delete(`/${id}`)
+    await api.delete(`/products/${id}`)
     return {message: "Produto excluído com sucesso"}
 } catch (error) {
     console.error("Erro ao excluir produto:", error)
