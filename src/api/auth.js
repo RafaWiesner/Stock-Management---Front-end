@@ -13,7 +13,7 @@ const loginUser = async (email, password) => {
 
 const registerUser = async (name, email, password) => {
     try {
-        const registeredUser = await api.post("/register", { name, email, password });
+        const registeredUser = await api.post("/users/register", { name, email, password });
         return registeredUser.data;
     } catch (error) {
         console.error("Erro ao se cadastrar:", error)
