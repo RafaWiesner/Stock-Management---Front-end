@@ -70,15 +70,15 @@ const ProductDataPopUp = () => {
           </label>
           <label>
             Tipo:
-            <input type="text" name="type" value={state.popUpInputsValues.type} onChange={handleChange} placeholder="Digite o tipo do produto" required/>
+            <input type="text" name="type" value={state.popUpInputsValues.type} onChange={handleChange} placeholder="Digite o tipo do produto" title="Apenas letras são permitidas" required/>
           </label>
           <label>
             Preço:
-            <input type="number" name="price" step="0.01" value={state.popUpInputsValues.price} onChange={handleChange} placeholder="Digite o preço" required/>
+            <input type="number" name="price" step="0.01" value={state.popUpInputsValues.price} onChange={handleChange} placeholder="Digite o preço" title="Apenas números iguais ou maiores que zero" required/>
           </label>
           <label>
             Estoque:
-            <input type="number" name="stock" value={state.popUpInputsValues.stock} onChange={handleChange} placeholder="Digite a quantidade em estoque" required/>
+            <input type="number" name="stock" value={state.popUpInputsValues.stock} onChange={handleChange} placeholder="Digite a quantidade em estoque" title="Apenas números iguais ou maiores que zero" required/>
           </label>
           <button type="submit" className="save-btn">Salvar</button>
         </form>
