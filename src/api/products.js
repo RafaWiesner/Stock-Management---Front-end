@@ -1,12 +1,14 @@
 import api from "./api";
 
-const getProducts = async () => {
+const getProducts = async (userId) => {
     try {
-        const products = await api.get("/products");
-        return products.data;
+      const products = await api.get("/products", {
+        params: { userId } // <-- envia userId na URL como ?userId=1
+      });
+      return products.data;
     } catch (error) {
-        console.error("Erro ao buscar produtos:", error)
-        throw error;
+      console.error("Erro ao buscar produtos:", error);
+      throw error;
     }
 }
 

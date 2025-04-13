@@ -4,15 +4,17 @@ import './Data.css'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TableFooter } from "@mui/material";
 
 import { getProducts } from "../../api/products.js"
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 
 const Data = () => {
 
   const {state, dispatch} = useContext(ProductContext)
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getProducts();
+      const data = await getProducts(user?.id);
       dispatch({ type: "getProducts", payload: data})
     };
     fetchData();
