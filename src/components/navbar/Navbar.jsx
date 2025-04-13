@@ -4,9 +4,12 @@ import "./Navbar.css";
 import { Button } from "@mui/material";
 import { deleteProduct } from "../../api/products";
 import { ProductContext } from '../../context/ProductsContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
   const { state, dispatch } = useContext(ProductContext);
+  const {user} = useContext(AuthContext)
+
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate(); // redirecionamento
 
@@ -54,7 +57,7 @@ const Navbar = () => {
 
       <div className="login-redirect">
         <button onClick={goToLogin} className="login-link">
-          Olá! Entre ou Cadastre-se
+          {user ? `Olá, ${user.name}`: "Olá! Entre ou cadastre-se."}
         </button>
       </div>
     </div>
