@@ -1,11 +1,14 @@
 import React, { useContext, useRef } from 'react'
 import { ProductContext } from '../../context/ProductsContext';
+import { AuthContext } from '../../context/AuthContext';
 import { createProduct, updateProduct } from '../../api/products';
 import "./ProductDataPopUp.css"
 
 const ProductDataPopUp = () => {
 
   const {state, dispatch} = useContext(ProductContext)
+  const { user } = useContext(AuthContext);
+
 
     // Função para atualizar o formData no contexto enquanto o usuário digita
     const handleChange = (e) => {
@@ -27,7 +30,7 @@ const ProductDataPopUp = () => {
         dispatch({ type: "updateProduct", payload: { id: state.selectedProduct.id, ...state.popUpInputsValues } });
       } else {
         // Criação do produto
-        const savedProduct = await createProduct(state.popUpInputsValues);
+        const savedProduct = await createProduct(state.popUpInputsValues, user?.id);
         dispatch({ type: "getProducts", payload: [...state.products, savedProduct] });
       }
 

@@ -12,15 +12,18 @@ const getProducts = async (userId) => {
     }
 }
 
-const createProduct =  async (data) => {
+const createProduct = async (data, userId) => {
     try {
-        const newProduct = await api.post("/products", data)
-        return newProduct.data;
+      const newProduct = await api.post("/products", {
+        ...data,
+        userId,
+      });
+      return newProduct.data;
     } catch (error) {
-        console.error("Erro ao criar um novo produto:", error)
-        throw error;
+      console.error("Erro ao criar um novo produto:", error);
+      throw error;
     }
-}
+  };
 
 const updateProduct = async (id, data) => {
     try {
