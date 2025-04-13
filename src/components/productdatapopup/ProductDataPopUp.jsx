@@ -12,6 +12,19 @@ const ProductDataPopUp = () => {
 
     // Função para atualizar o formData no contexto enquanto o usuário digita
     const handleChange = (e) => {
+
+      const { name, value } = e.target;
+
+      // Validação para o campo 'tipo' - apenas letras e espaços
+      if (name === "tipo" && !/^[A-Za-z\s]*$/.test(value)) {
+        return; // Não atualiza se for inválido
+      }
+    
+      // Validação para 'preco' e 'quantidade' - apenas números maiores que 0
+      if ((name === "preco" || name === "quantidade") && (isNaN(value) || Number(value) <= 0)) {
+        return;
+      }
+
       dispatch({
         type: "updatePopUpInputsValues",
         payload: { name: e.target.name, value: e.target.value }
@@ -21,6 +34,8 @@ const ProductDataPopUp = () => {
   const handleProductSave = async (e) => {
 
     e.preventDefault();
+
+
 
 
     try {
