@@ -79,3 +79,11 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+.error-msg {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  display: block;
+}
+
