@@ -86,7 +86,13 @@ const productReducer = (state, action) => {
             return {
                 ...state,
                 products: state.products.filter((p) => p.id !== action.payload),
-                selectedProduct: null
+                selectedProduct: null,
+                popUpInputsValues: {
+                    name: "",
+                    type: "",
+                    price: "",
+                    stock: "",
+                },
             }
         
         case "searchProductInput":
