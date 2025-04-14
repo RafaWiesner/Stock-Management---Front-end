@@ -22,7 +22,7 @@ const ProductDataPopUp = () => {
     if (name === "price" || name === "stock") {
       if (value === "") {
         error = ""; // Permite campo vazio temporariamente
-      } else if (isNaN(value) || Number(value) <= 0) {
+      } else if (isNaN(value) || Number(value) < 0) {
         error = "O valor deve ser maior que zero.";
       }
     }
