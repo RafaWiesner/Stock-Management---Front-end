@@ -122,7 +122,13 @@ const productReducer = (state, action) => {
                 message: "",
                 onConfirm: null,
                 },
-                selectedProduct: null
+                selectedProduct: null,
+                popUpInputsValues: {
+                    name: "",
+                    type: "",
+                    price: "",
+                    stock: "",
+                },
             };
               
         case "confirmDelete":
