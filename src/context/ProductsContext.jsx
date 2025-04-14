@@ -122,6 +122,7 @@ const productReducer = (state, action) => {
                 message: "",
                 onConfirm: null,
                 },
+                selectedProduct: null
             };
               
         case "confirmDelete":
