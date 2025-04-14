@@ -73,6 +73,7 @@ const ProductDataPopUp = () => {
               value={state.popUpInputsValues.name}
               onChange={handleChange}
               placeholder="Digite o nome do produto"
+              maxLength={40}
               required
             />
           </label>
@@ -84,6 +85,7 @@ const ProductDataPopUp = () => {
               value={state.popUpInputsValues.type}
               onChange={handleChange}
               placeholder="Digite o tipo do produto"
+              maxLength={20}
               required
             />
             {errors.type && <span className="error-msg">{errors.type}</span>}
@@ -97,6 +99,7 @@ const ProductDataPopUp = () => {
               value={state.popUpInputsValues.price}
               onChange={handleChange}
               placeholder="Digite o preço"
+              maxLength={6}
               required
             />
             {errors.price && <span className="error-msg">{errors.price}</span>}
@@ -109,6 +112,7 @@ const ProductDataPopUp = () => {
               value={state.popUpInputsValues.stock}
               onChange={handleChange}
               placeholder="Digite a quantidade em estoque"
+              maxLength={6}
               required
             />
             {errors.stock && <span className="error-msg">{errors.stock}</span>}
