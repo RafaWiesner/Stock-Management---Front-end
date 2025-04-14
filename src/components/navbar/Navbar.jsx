@@ -66,7 +66,7 @@ const Navbar = () => {
       <div className="login-redirect">
   {user.name ? (
     <div className="user-info">
-      <p className="user-name">Olá,{user.name}.</p>
+      <p className="user-name">Olá, {user.name}.</p>
       <button onClick={goToLogin} className="logout-button">Sair</button>
     </div>
   ) : (
