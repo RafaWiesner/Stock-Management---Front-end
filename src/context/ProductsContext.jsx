@@ -66,6 +66,12 @@ const productReducer = (state, action) => {
                 product.id === action.payload.id ? { ...product, ...action.payload } : product
                 ),
                 selectedProduct: null, // Reseta o produto selecionado após a edição
+                popUpInputsValues: {
+                    name: "",
+                    type: "",
+                    price: "",
+                    stock: "",
+                },
             };
             
 
@@ -79,7 +85,6 @@ const productReducer = (state, action) => {
             return {
                 ...state,
                 isPopUpOpen: false,
-                popUpInputsValues : { ...state }
             };
 
         case "removeProduct":
