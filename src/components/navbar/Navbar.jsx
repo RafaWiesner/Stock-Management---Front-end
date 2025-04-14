@@ -64,29 +64,17 @@ const Navbar = () => {
       </div>
 
       <div className="login-redirect">
-        {/* <button onClick={goToLogin} className="login-link">
-          {user.name ? `Olá, ${user.name}` : "Olá! Entre ou cadastre-se."}
-        </button> */}
-
-        {user.name ? (
-        <>
-          <p>Olá, {user.name}</p>
-          <button
-            onClick={goToLogin}
-            className="login-link"
-          >
-            Sair
-          </button>
-        </>
-      ) : (
-        <button
-          onClick={goToLogin}
-          className="login-link"
-        >
-          Olá! Entre ou cadastre-se.
-        </button>
-      )}
-      </div>
+  {user.name ? (
+    <div className="user-info">
+      <p className="user-name">Olá,{user.name}.</p>
+      <button onClick={goToLogin} className="logout-button">Sair</button>
+    </div>
+  ) : (
+    <button onClick={goToLogin} className="login-link">
+      Olá! Entre ou cadastre-se.
+    </button>
+  )}
+</div>
     </div>
   );
 };
