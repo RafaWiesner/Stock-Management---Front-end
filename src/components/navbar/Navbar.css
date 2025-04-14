@@ -27,16 +27,7 @@
 }
 
 /* Estilizando os botões */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    width: 100%;
-    padding-left: 15px;
-}
+
 
 /* Exibir os botões quando o navbar estiver expandido */
 .navbar.expanded .buttons {
@@ -46,10 +37,12 @@
 /* Estilização dos botões */
 .buttons button {
     color: #f2f2f2;
+    font-size: 1rem;
     transition: .2s;
     text-align: left;
     width: auto;
     justify-content: flex-start;
+    text-transform: capitalize;
     display: flex;
     transition: color 0.1s ease-in-out;
 }
