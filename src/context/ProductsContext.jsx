@@ -119,12 +119,12 @@ const productReducer = (state, action) => {
             };
               
         case "confirmDelete":
-            if (state.confirmDelete.onConfirm) {
-                state.confirmDelete.onConfirm();
+            if (state.confirmDeletePopUp.onConfirm) {
+                state.confirmDeletePopUp.onConfirm();
             }
             return {
                 ...state,
-                confirmDelete: {
+                confirmDeletePopUp: {
                 isOpen: false,
                 message: "",
                 onConfirm: null,
