@@ -8,7 +8,7 @@ const ConfirmDeletePopUp = () => {
   return (
     <div className="overlay">
       <div className="popup confirm-popup">
-        <p>{state.ConfirmDeletePopUp.message}</p>
+        <p>{state.confirmDeletePopUp.message}</p>
         <div className="popup-actions">
           <button
             className="confirm-btn"
