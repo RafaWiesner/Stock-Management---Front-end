@@ -9,13 +9,11 @@
     transition: height 0.3s ease-in-out;
 }
 
-/* Quando o menu está aberto, aumenta a altura do navbar */
 .navbar.expanded {
     height: auto;
     padding-bottom: 15px;
 }
 
-/* Botão do menu hambúrguer */
 .menu-button {
     background: none;
     border: none;
@@ -26,15 +24,11 @@
     display: none;
 }
 
-/* Estilizando os botões */
-
-
-/* Exibir os botões quando o navbar estiver expandido */
 .navbar.expanded .buttons {
     opacity: 1;
 }
 
-/* Estilização dos botões */
+
 .buttons button {
     color: #f2f2f2;
     font-size: 1rem;
@@ -51,7 +45,7 @@
     color: #ccc;
 }
 
-/* Input de pesquisa */
+
 .search-input {
     max-width: 130px;
     background-color: #555;
@@ -67,7 +61,7 @@
     color: #f2f2f2;
 }
 
-/* Botão de login (Olá! Entre ou Cadastre-se) */
+
 .login-redirect {
     margin-left: auto;
     padding-right: 15px;
@@ -88,7 +82,7 @@
     color: #ccc;
 }
 
-/* Estilos para o nome do usuário e botão "Sair" */
+
 .user-info {
     display: flex;
     align-items: center;
@@ -118,7 +112,7 @@
 }
 
 
-/* Responsividade: Mostrar menu normal em telas grandes */
+
 @media (min-width: 769px) {
     .navbar {
         flex-direction: row;
@@ -162,7 +156,7 @@
     }
 }
 
-/* Responsividade: Mostrar menu hambúrguer em telas menores */
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: row;

@@ -3,7 +3,7 @@ import api from "./api";
 const getProducts = async (userId) => {
     try {
       const products = await api.get("/products", {
-        params: { userId } // <-- envia userId na URL como ?userId=1
+        params: { userId }
       });
       return products.data;
     } catch (error) {
@@ -33,17 +33,17 @@ const updateProduct = async (id, data) => {
         console.error("Erro ao atualizar produto:", error)
         throw error;
     }
-}
+};
 
 const deleteProduct = async (id) => {
-try {
-    await api.delete(`/products/${id}`)
-    return {message: "Produto excluído com sucesso"}
-} catch (error) {
-    console.error("Erro ao excluir produto:", error)
-    throw error;
-}
-}
+    try {
+        await api.delete(`/products/${id}`)
+        return {message: "Produto excluído com sucesso"}
+    } catch (error) {
+        console.error("Erro ao excluir produto:", error)
+        throw error;
+    }
+};
 
 export {
     getProducts,

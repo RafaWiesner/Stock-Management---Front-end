@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useEffect, useContext } from "react"
 import { ProductContext } from "../../context/ProductsContext.jsx";
 import './Data.css'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TableFooter } from "@mui/material";
@@ -22,7 +22,6 @@ const Data = () => {
 
 
   const selectedProduct = (product) => {
-
     dispatch({type: "getSelectedProduct", payload: state.selectedProduct === product ? null : product})
     console.log(product)
 }
@@ -70,7 +69,6 @@ const displayedProducts = state.searchInputValue ? state.filteredProducts : stat
             </TableRow>
           </TableFooter>
         </Table>
-
       </TableContainer>
   )
 }

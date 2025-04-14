@@ -11,7 +11,7 @@ const Navbar = () => {
   const {user} = useContext(AuthContext)
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate(); // redirecionamento
+  const navigate = useNavigate();
 
   const handleDeleteProduct = () => {
     dispatch({

@@ -1,17 +1,11 @@
-// src/context/AuthContext.jsx
-
 import { createContext, useReducer } from "react";
 
-// Cria o contexto
-export const AuthContext = createContext();
-
-// Estado inicial
 const initialState = {
   user: null,
   isAuthenticated: false,
 };
 
-// Reducer com as ações
+
 function authReducer(state, action) {
   switch (action.type) {
     case "LOGIN":
@@ -37,7 +31,8 @@ function authReducer(state, action) {
   }
 }
 
-// Provider
+export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 

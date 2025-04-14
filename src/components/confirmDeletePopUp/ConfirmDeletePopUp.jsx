@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ProductContext } from '../../context/ProductsContext';
-import './ConfirmDeletePopUp.css'; // crie estilos se quiser
+import './ConfirmDeletePopUp.css';
 
 const ConfirmDeletePopUp = () => {
   const { state, dispatch } = useContext(ProductContext);

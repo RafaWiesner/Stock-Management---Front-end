@@ -8,7 +8,6 @@ const loginUser = async (email, password) => {
     console.error("Erro ao fazer login:", error)
     throw error;
   }
-
 };
 
 const registerUser = async (name, email, password) => {
@@ -19,7 +18,6 @@ const registerUser = async (name, email, password) => {
         console.error("Erro ao se cadastrar:", error)
         throw error;
     }
-
 };
 
 export {

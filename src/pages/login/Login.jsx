@@ -14,11 +14,11 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const user = await loginUser(email, password); // faz login no backend
-      dispatch({ type: "LOGIN", payload: user }); // salva os dados do usuário (pode incluir token ou nome)
-      navigate("/"); // redireciona
+      const user = await loginUser(email, password); 
+      dispatch({ type: "LOGIN", payload: user }); 
+      navigate("/"); 
     } catch (error) {
-      alert("E-mail ou senha inválidos."); // mensagem para o usuário
+      alert("E-mail ou senha inválidos.");
     }
   };
 

@@ -1,4 +1,3 @@
-/* Fundo escuro semi-transparente */
 .overlay {
   position: fixed;
   top: 0;
@@ -69,7 +68,6 @@
   background: #555;
 }
 
-/* Botão de fechar */
 .close-btn {
   position: absolute;
   top: 10px;

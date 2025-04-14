@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const newUser = await registerUser(name, email, password);
-      dispatch({ type: "LOGIN", payload: newUser }); // Já loga o usuário
+      dispatch({ type: "LOGIN", payload: newUser });
       navigate("/");
     } catch (error) {
       alert("Erro ao se cadastrar. Tente outro e-mail.");

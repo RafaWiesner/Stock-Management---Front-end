@@ -21,7 +21,7 @@ const ProductDataPopUp = () => {
 
     if (name === "price" || name === "stock") {
       if (value === "") {
-        error = ""; // Permite campo vazio temporariamente
+        error = "";
       } else if (isNaN(value) || Number(value) < 0) {
         error = "O valor deve ser maior que zero.";
       }
@@ -37,9 +37,6 @@ const ProductDataPopUp = () => {
 
   const handleProductSave = async (e) => {
     e.preventDefault();
-
-    const hasErrors = Object.values(errors).some(err => err);
-    if (hasErrors) return alert("Corrija os erros antes de salvar.");
 
     try {
       if (state.selectedProduct) {
