@@ -38,6 +38,11 @@ const ProductDataPopUp = () => {
   const handleProductSave = async (e) => {
     e.preventDefault();
 
+    const hasErrors = Object.values(errors).some(error => error);
+    if (hasErrors) {
+      return;
+    }
+
     try {
       if (state.selectedProduct) {
         await updateProduct(state.selectedProduct.id, state.popUpInputsValues);
