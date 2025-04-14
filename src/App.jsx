@@ -9,6 +9,7 @@ import { AuthContext } from './context/AuthContext';
 import Login from './pages/login/Login';
 import { useContext } from 'react';
 import Register from './pages/register/Register';
+import ConfirmDeletePopUp from './components/confirmDeletePopUp/ConfirmDeletePopUp';
 
 function App() {
   const { state } = useContext(ProductContext);
@@ -30,6 +31,7 @@ function App() {
       </Routes>
 
       {state.isPopUpOpen && <ProductDataPopUp />}
+      {state.confirmDeletePopUp.isOpen && <ConfirmDeletePopUp/>}
     </div>
   );
 }

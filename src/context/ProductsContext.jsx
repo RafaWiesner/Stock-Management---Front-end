@@ -17,6 +17,13 @@ const tableData = {
 
     searchInputValue: "",
     filteredProducts: [],
+
+
+    confirmDeletePopUp: {
+        isOpen: false,
+        message: "",
+        onConfirm: null,
+      }
 }
 
 
@@ -46,20 +53,20 @@ const productReducer = (state, action) => {
                 : { name: "", type: "", price: "", stock: "" } // Se for novo, reseta os valores
             };
 
-            case "updatePopUpInputsValues":
-                return {
-                    ...state,
-                    popUpInputsValues: { ...state.popUpInputsValues, [action.payload.name]: action.payload.value }
-                };
+        case "updatePopUpInputsValues":
+            return {
+                ...state,
+                popUpInputsValues: { ...state.popUpInputsValues, [action.payload.name]: action.payload.value }
+            };
 
-                case "updateProduct":
-                    return {
-                      ...state,
-                      products: state.products.map((product) =>
-                        product.id === action.payload.id ? { ...product, ...action.payload } : product
-                      ),
-                      selectedProduct: null, // Reseta o produto selecionado após a edição
-                    };
+        case "updateProduct":
+            return {
+                ...state,
+                products: state.products.map((product) =>
+                product.id === action.payload.id ? { ...product, ...action.payload } : product
+                ),
+                selectedProduct: null, // Reseta o produto selecionado após a edição
+            };
             
 
         case "onPopUpOpen":
@@ -90,7 +97,42 @@ const productReducer = (state, action) => {
                     product.name.toLowerCase().startsWith(action.payload.toLowerCase())
                 ),
             }
-    
+
+        case "openConfirmDeletePopUp":
+            return {
+                ...state,
+                confirmDeletePopUp: {
+                isOpen: true,
+                message: action.payload.message,
+                onConfirm: action.payload.onConfirm,
+                },
+            };
+              
+        case "closeConfirmDeletePopUp":
+            return {
+                ...state,
+                confirmDeletePopUp: {
+                isOpen: false,
+                message: "",
+                onConfirm: null,
+                },
+            };
+              
+        case "confirmDelete":
+            if (state.confirmDelete.onConfirm) {
+                state.confirmDelete.onConfirm();
+            }
+            return {
+                ...state,
+                confirmDelete: {
+                isOpen: false,
+                message: "",
+                onConfirm: null,
+                },
+            };
+              
+
+        
         default:
             return state;
     }

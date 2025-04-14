@@ -5,32 +5,34 @@ import { createProduct, updateProduct } from '../../api/products';
 import "./ProductDataPopUp.css"
 
 const ProductDataPopUp = () => {
-
   const { state, dispatch } = useContext(ProductContext);
   const { user } = useContext(AuthContext);
-
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     let error = "";
 
-    if (name === "type" && !/^[A-Za-zÀ-ÿ\s]*$/.test(value)) {
-      error = "Somente letras são permitidas.";
+    if (name === "type") {
+      if (!/^[A-Za-zÀ-ÿ\s]*$/.test(value)) {
+        error = "Somente letras são permitidas.";
+      }
     }
 
-    if ((name === "price" || name === "stock") && (isNaN(value) || Number(value) <= 0)) {
-      error = "O valor deve ser maior que zero.";
+    if (name === "price" || name === "stock") {
+      if (value === "") {
+        error = ""; // Permite campo vazio temporariamente
+      } else if (isNaN(value) || Number(value) <= 0) {
+        error = "O valor deve ser maior que zero.";
+      }
     }
 
     setErrors(prev => ({ ...prev, [name]: error }));
 
-    if (!error) {
-      dispatch({
-        type: "updatePopUpInputsValues",
-        payload: { name, value }
-      });
-    }
+    dispatch({
+      type: "updatePopUpInputsValues",
+      payload: { name, value }
+    });
   };
 
   const handleProductSave = async (e) => {
@@ -42,10 +44,16 @@ const ProductDataPopUp = () => {
     try {
       if (state.selectedProduct) {
         await updateProduct(state.selectedProduct.id, state.popUpInputsValues);
-        dispatch({ type: "updateProduct", payload: { id: state.selectedProduct.id, ...state.popUpInputsValues } });
+        dispatch({
+          type: "updateProduct",
+          payload: { id: state.selectedProduct.id, ...state.popUpInputsValues }
+        });
       } else {
         const savedProduct = await createProduct(state.popUpInputsValues, user?.id);
-        dispatch({ type: "getProducts", payload: [...state.products, savedProduct] });
+        dispatch({
+          type: "getProducts",
+          payload: [...state.products, savedProduct]
+        });
       }
 
       dispatch({ type: "onPopUpClose" });

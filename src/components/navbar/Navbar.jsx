@@ -13,13 +13,21 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate(); // redirecionamento
 
-  const handleDeleteProduct = async () => {
-    try {
-      await deleteProduct(state.selectedProduct.id);
-      dispatch({ type: "removeProduct", payload: state.selectedProduct.id });
-    } catch (error) {
-      console.error("Erro ao excluir produto:", error);
-    }
+  const handleDeleteProduct = () => {
+    dispatch({
+      type: "openConfirmDeletePopUp",
+      payload: {
+        message: `Tem certeza que deseja excluir o produto "${state.selectedProduct.name}"?`,
+        onConfirm: async () => {
+          try {
+            await deleteProduct(state.selectedProduct.id);
+            dispatch({ type: "removeProduct", payload: state.selectedProduct.id });
+          } catch (error) {
+            console.error("Erro ao excluir produto:", error);
+          }
+        },
+      },
+    });
   };
 
   const searchProductInput = (e) => {
