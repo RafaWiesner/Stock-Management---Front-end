@@ -12,7 +12,7 @@ const ConfirmDeletePopUp = () => {
         <div className="popup-actions">
           <button
             className="confirm-btn"
-            onClick={() => dispatch({ type: "confirmDeletePopUp" })}
+            onClick={() => dispatch({ type: "confirmDelete" })}
           >
             Confirmar
           </button>
