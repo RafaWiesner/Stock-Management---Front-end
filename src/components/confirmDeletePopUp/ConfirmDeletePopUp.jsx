@@ -5,8 +5,6 @@ import './ConfirmDeletePopUp.css'; // crie estilos se quiser
 const ConfirmDeletePopUp = () => {
   const { state, dispatch } = useContext(ProductContext);
 
-  if (!state.ConfirmDeletePopUp.isOpen) return null;
-
   return (
     <div className="overlay">
       <div className="popup confirm-popup">
