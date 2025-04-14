@@ -99,7 +99,7 @@ const ProductDataPopUp = () => {
               value={state.popUpInputsValues.price}
               onChange={handleChange}
               placeholder="Digite o preço"
-              maxLength={6}
+              maxLength={12}
               required
             />
             {errors.price && <span className="error-msg">{errors.price}</span>}
