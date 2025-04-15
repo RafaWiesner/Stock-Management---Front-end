@@ -16,7 +16,7 @@ const Data = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const data = await api.getProducts(user?.id);
+      const data = await getProducts(user?.id);
       dispatch({ type: 'getProducts', payload: data });
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
