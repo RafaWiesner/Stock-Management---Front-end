@@ -28,6 +28,7 @@ const Data = () => {
       setLoading(false);
     }
   };
+  fetchProducts()
 }, []);
 
 
