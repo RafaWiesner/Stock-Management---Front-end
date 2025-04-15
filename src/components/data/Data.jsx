@@ -12,24 +12,20 @@ const Data = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true)
 
- useEffect(() => {
+  useEffect(() => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await api.get('/products', {
-        params: {
-          userId: user?.id ?? null
-        }
-      });
-      dispatch({ type: 'getProducts', payload: response.data });
+      const data = await api.getProducts(user?.id);
+      dispatch({ type: 'getProducts', payload: data });
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
     } finally {
       setLoading(false);
     }
   };
-  fetchProducts()
-}, []);
+    fetchProducts()
+  }, []);
 
 
   const selectedProduct = (product) => {
