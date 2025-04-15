@@ -16,16 +16,18 @@ const Data = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const data = await getProducts(); // sua função que faz o fetch
-      dispatch({ type: "getProducts", payload: data });
+      const response = await api.get('/products', {
+        params: {
+          userId: user?.id ?? null
+        }
+      });
+      dispatch({ type: 'getProducts', payload: response.data });
     } catch (error) {
-      console.error("Erro ao carregar produtos:", error);
+      console.error('Erro ao buscar produtos:', error);
     } finally {
       setLoading(false);
     }
   };
-
-  fetchProducts();
 }, []);
 
 
