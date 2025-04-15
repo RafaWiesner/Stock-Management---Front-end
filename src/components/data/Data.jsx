@@ -1,7 +1,7 @@
-import { useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { ProductContext } from "../../context/ProductsContext.jsx";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, TableFooter } from "@mui/material";
-
+import "./Data.css"
 import { getProducts } from "../../api/products.js"
 import { AuthContext } from "../../context/AuthContext.jsx";
 
@@ -10,14 +10,23 @@ const Data = () => {
 
   const {state, dispatch} = useContext(ProductContext)
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getProducts(user?.id);
-      dispatch({ type: "getProducts", payload: data})
-    };
-    fetchData();
-  }, []);
+ useEffect(() => {
+  const fetchProducts = async () => {
+    setLoading(true);
+    try {
+      const data = await getProducts(); // sua função que faz o fetch
+      dispatch({ type: "getProducts", payload: data });
+    } catch (error) {
+      console.error("Erro ao carregar produtos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
 
   const selectedProduct = (product) => {
@@ -43,16 +52,22 @@ const displayedProducts = state.searchInputValue ? state.filteredProducts : stat
             </TableRow>
           </TableHead>
           <TableBody>
-            {displayedProducts.slice(state.page * state.rowsPerPage, (state.page + 1) * state.rowsPerPage).map((product) => (
-              <TableRow key={product.id}
-                onClick={() => selectedProduct(product)}
-                sx={{ cursor: "pointer", backgroundColor: state.selectedProduct === product ? "#b2b2b2" : "inherit" }}>
-                <TableCell>{product.name}</TableCell>
-                <TableCell>{product.type}</TableCell>
-                <TableCell>{`R$ ${product.price}`}</TableCell>
-                <TableCell>{product.stock}</TableCell>
-              </TableRow>
-            ))}
+            {loading ? (
+              <div className="spinner">
+                <p>Carregando produtos, por favor aguarde...</p>
+              </div>
+              ) : (
+              displayedProducts.slice(state.page * state.rowsPerPage, (state.page + 1) * state.rowsPerPage).map((product) => (
+                <TableRow key={product.id}
+                  onClick={() => selectedProduct(product)}
+                  sx={{ cursor: "pointer", backgroundColor: state.selectedProduct === product ? "#b2b2b2" : "inherit" }}>
+                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product.type}</TableCell>
+                  <TableCell>{`R$ ${product.price}`}</TableCell>
+                  <TableCell>{product.stock}</TableCell>
+                </TableRow>
+              ))
+            )};
           </TableBody>
           <TableFooter>
             <TableRow>
