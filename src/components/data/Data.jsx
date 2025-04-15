@@ -53,9 +53,14 @@ const displayedProducts = state.searchInputValue ? state.filteredProducts : stat
           </TableHead>
           <TableBody>
             {loading ? (
-              <div className="spinner">
-                <p>Carregando produtos, por favor aguarde...</p>
-              </div>
+              <TableRow>
+                <TableCell colSpan={4} align="center">
+                  <div className="loading-container">
+                    <div className="spinner"></div>
+                    <p>Carregando produtos, por favor aguarde...</p>
+                  </div>
+                </TableCell>
+              </TableRow>
               ) : (
               displayedProducts.slice(state.page * state.rowsPerPage, (state.page + 1) * state.rowsPerPage).map((product) => (
                 <TableRow key={product.id}
@@ -67,7 +72,7 @@ const displayedProducts = state.searchInputValue ? state.filteredProducts : stat
                   <TableCell>{product.stock}</TableCell>
                 </TableRow>
               ))
-            )};
+            )}
           </TableBody>
           <TableFooter>
             <TableRow>
