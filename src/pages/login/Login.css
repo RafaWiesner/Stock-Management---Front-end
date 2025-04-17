@@ -58,14 +58,8 @@
   .login-form button:hover {
     opacity: 0.9;
   }
-
-  .loading-message {
-    fontSize: "0.9rem";
-    color: "#666"; 
-    marginTop: "8px"
-  }
   
-  .spinner {
+  .login-spinner {
     border: 2px solid #ccc;
     border-top: 2px solid #333;
     border-radius: 50%;

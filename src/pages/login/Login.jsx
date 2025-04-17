@@ -59,7 +59,7 @@ const Login = () => {
           {loading ? (
             <>
               Conectando...
-              <span className="spinner" />
+              <span className="login-spinner" />
             </>
           ) : (
             "Entrar"
@@ -68,7 +68,7 @@ const Login = () => {
 
         {loading && (
           <p className="loading-message">
-            O servidor pode demorar alguns segundos para iniciar, aguarde...
+            O servidor pode demorar alguns segundos para iniciar, por favor aguarde...
           </p>
         )}
 
