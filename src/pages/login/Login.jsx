@@ -9,16 +9,20 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false); // Estado de carregamento
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
       const user = await loginUser(email, password); 
       dispatch({ type: "LOGIN", payload: user }); 
       navigate("/"); 
     } catch (error) {
       alert("E-mail ou senha inválidos.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -35,6 +39,7 @@ const Login = () => {
     <div className="login-container">
       <form onSubmit={handleLogin} className="login-form">
         <h2>Login</h2>
+
         <input
           type="email"
           placeholder="E-mail"
@@ -49,11 +54,22 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Entrar</button>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Conectando..." : "Entrar"}
+        </button>
+
+        {loading && (
+          <p style={{ fontSize: "0.9rem", color: "#666", marginTop: "8px" }}>
+            O servidor pode demorar alguns segundos para iniciar, aguarde...
+          </p>
+        )}
+
         <button
           type="button"
           onClick={handleAccessWithoutAccount}
           className="access-without-account"
+          disabled={loading}
         >
           Acessar como visitante
         </button>
@@ -61,6 +77,7 @@ const Login = () => {
           type="button"
           onClick={handleGoToRegister}
           className="go-to-register"
+          disabled={loading}
         >
           Criar conta
         </button>

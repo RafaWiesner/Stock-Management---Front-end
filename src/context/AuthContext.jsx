@@ -23,7 +23,7 @@ function authReducer(state, action) {
     case "ACCESS_WITHOUT_ACCOUNT":
       return {
         ...state,
-        user: { email: "guest@demo.com" },
+        user: null,
         isAuthenticated: true,
       };
     default:
