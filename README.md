@@ -44,7 +44,7 @@ Este é o repositório do frontend do projeto **Gerenciador de Estoque**, desenv
 # Link do Projeto
 
 Acesse o projeto em funcionamento:  
-[https://gerenciador-estoque.vercel.app](https://gerenciador-estoque.vercel.app)
+[https://stock-management-front-end-ruby.vercel.app](https://stock-management-front-end-ruby.vercel.app)
 
 ---
 
