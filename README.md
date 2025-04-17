@@ -50,7 +50,7 @@ Acesse o projeto em funcionamento:
 
 
 
-## 🔗 Link para o Backend
+# Link para o Backend
 
 O backend deste projeto está disponível em:  
-👉 [https://github.com/seu-usuario/gerenciador-estoque-backend](https://github.com/seu-usuario/gerenciador-estoque-backend)
+[https://github.com/RafaWiesner/Stock-Management---Back-end](https://github.com/RafaWiesner/Stock-Management---Back-end)
