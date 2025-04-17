@@ -56,7 +56,14 @@ const Login = () => {
         />
 
         <button type="submit" disabled={loading}>
-          {loading ? "Conectando..." : "Entrar"}
+          {loading ? (
+            <>
+              Conectando...
+              <span className="spinner" />
+            </>
+          ) : (
+            "Entrar"
+          )}
         </button>
 
         {loading && (
