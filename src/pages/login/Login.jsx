@@ -67,7 +67,7 @@ const Login = () => {
         </button>
 
         {loading && (
-          <p style={{ fontSize: "0.9rem", color: "#666", marginTop: "8px" }}>
+          <p className="loading-message">
             O servidor pode demorar alguns segundos para iniciar, aguarde...
           </p>
         )}
